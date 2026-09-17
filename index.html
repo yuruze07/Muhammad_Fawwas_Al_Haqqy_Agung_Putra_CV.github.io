@@ -7,18 +7,16 @@
                 <style>
                         body {
                                 font-family: Arial, sans-serif;
-                                margin: 0;
                                 background-color: #f2f2f2;
                                 color: #222222;
                         }
                         .container {
                                 width: 80%;
-                                max-width: 800px;
-                                margin: 50px auto;
+                                margin: 80px auto;
+                                padding: 10px;
                                 background-color: white;
-                                padding: 30px;
                                 text-align: center;
-                                border-radius: 10px;
+                                border-radius: 30px;
                         }
                         .slide {
                                 display: none;
@@ -27,29 +25,16 @@
                         .slide.active {
                                 display: block;
                         }
-
                         h1 {
                                 font-size: 40px;
                         }
-
-                        h2 {
-                                color: #444;
-                        }
-
-                        p {
-                                line-height: 1.6;
-                        }
-
                         ul {
                                 list-style-position: inside;
                                 padding: 0;
                         }
-
                         li {
                                 margin: 10px;
                         }
-
-                        /* Navigation buttons */
                         .navigation {
                                 margin-top: 20px;
                         }
@@ -58,12 +43,12 @@
                                 margin: 5px;
                                 border: none;
                                 border-radius: 5px;
-                                background-color: #333;
+                                background-color: #323883d7;
                                 color: white;
                                 cursor: pointer;
                         }
                         button:hover {
-                                background-color: #555;
+                                background-color: #192ff7ee;
                         }
 
                         #slideNumber {
@@ -71,11 +56,9 @@
                                 color: #777;
                         }
                 </style>
-                ```
         </head>
 
         <body>
-                ```
                 <div class="container">
                         <div class="slide active">
                                 <h1>Muhammad Fawwas Al Haqqy Agung Putra</h1>
@@ -91,11 +74,10 @@
                         <div class="slide">
                                 <h1>Education & Skills</h1>
                                 <h2>Education</h2>
-                                <p>
-                                        Institut Teknologi Sepuluh Nopember
-                                        <br />
-                                        Informatics
-                                </p>
+                                <ul>
+                                        <li>MAN Insan Cendekia OKI</li>
+                                        <li>Institut Teknologi Sepuluh Nopember<br />(Informatics)</li>
+                                </ul>
                                 <h2>Skills</h2>
                                 <ul>
                                         <li>HTML</li>
@@ -124,40 +106,40 @@
                                         Email: fawwazsafe@email.com
                                         <br />
                                         GitHub: github.com/yuruze07
+                                        <br />
+                                        Phone: +6281278869288
                                 </p>
                         </div>
                         <div class="navigation">
-                                <button onclick="previousSlide()">← Previous</button>
-
-                                <button onclick="nextSlide()">Next →</button>
+                                <button onclick="previousSlide()"><- Previous</button>
+                                <button onclick="nextSlide()">Next -></button>
                         </div>
                         <div id="slideNumber">Slide 1 of 3</div>
                 </div>
                 <script>
                         let slides = document.querySelectorAll(".slide");
-                        let currentSlide = 0;
-                        function showSlide(number) {
+                        let current = 0;
+
+                        function showSlide() {
                                 for (let i = 0; i < slides.length; i++) {
                                         slides[i].classList.remove("active");
                                 }
-                                slides[number].classList.add("active");
-                                document.getElementById("slideNumber").innerHTML =
-                                        "Slide " + (number + 1) + " of " + slides.length;
+                                slides[current].classList.add("active");
+                                document.getElementById("slideNumber").innerHTML = "Slide " + (current + 1) + " of 3";
                         }
                         function nextSlide() {
-                                currentSlide++;
-                                if (currentSlide >= slides.length) {
-                                        currentSlide = 0;
+                                current++;
+                                if (current == slides.length) {
+                                        current = 0;
                                 }
-
-                                showSlide(currentSlide);
+                                showSlide();
                         }
                         function previousSlide() {
-                                currentSlide--;
-                                if (currentSlide < 0) {
-                                        currentSlide = slides.length - 1;
+                                current--;
+                                if (current < 0) {
+                                        current = slides.length - 1;
                                 }
-                                showSlide(currentSlide);
+                                showSlide();
                         }
                 </script>
         </body>
